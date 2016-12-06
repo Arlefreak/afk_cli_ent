@@ -7,3 +7,5 @@ authors = ["Arlefreak <hi@arlefreak.com>"]
 termion = "1"
 clap = "2"
 hyper = "*"
+url = "*"
+rustc-serialize = "*"

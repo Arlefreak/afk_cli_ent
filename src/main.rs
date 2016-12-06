@@ -1,6 +1,8 @@
 extern crate termion;
 extern crate hyper;
 extern crate clap;
+extern crate url;
+extern crate rustc_serialize;
 
 mod afk;
 
@@ -28,8 +30,8 @@ fn main(){
     println!("Value for config: {}", config);
 
     afk::afk();
-    afk::api::api();
     afk::projects::projects();
     afk::about::about();
     afk::diary::diary();
+    println!("{:?}", afk::diary::get_post(7).title);
 }
