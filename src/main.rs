@@ -30,8 +30,12 @@ fn main(){
     println!("Value for config: {}", config);
 
     afk::afk();
-    afk::projects::projects();
-    afk::about::about();
-    afk::diary::diary();
-    println!("{:?}", afk::diary::get_post(7).title);
+    println!("{:?}", afk::about::get_entry(2).slug);
+    println!("{:?}", afk::about::get_entries()[0].slug);
+    println!("{:?}", afk::diary::get_post(7).slug);
+    println!("{:?}", afk::diary::get_posts()[0].slug);
+    println!("{:?}", afk::portfolio::get_project(2).slug);
+    println!("{:?}", afk::portfolio::get_projects()[0].slug);
+    println!("{:?}", afk::portfolio::get_project_category(1).slug);
+    println!("{:?}", afk::portfolio::get_project_categories()[0].slug);
 }

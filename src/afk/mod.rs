@@ -1,5 +1,5 @@
 pub mod api;
-pub mod projects;
+pub mod portfolio;
 pub mod about;
 pub mod diary;
 

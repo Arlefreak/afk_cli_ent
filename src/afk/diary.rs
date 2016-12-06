@@ -1,12 +1,14 @@
+#![allow(dead_code)]
 extern crate hyper;
 extern crate rustc_serialize;
 
 use afk::api;
-use rustc_serialize::{Encodable, json};
+use rustc_serialize::{json};
 
 pub static API_ENDPOINT: &'static str = "diary/posts/";
 
 #[derive(RustcDecodable, RustcEncodable, Debug)]
+#[allow(non_snake_case)]
 pub struct Post {
     pub id: i32,
     pub tags: Vec<String>,
@@ -17,6 +19,13 @@ pub struct Post {
     pub text: String,
     pub dateCreated: String,
     pub dateUpdated: String,
+}
+
+pub fn get_posts() -> Vec<Post>{
+    let url = format!("{}{}", api::API_ENDPOINT, API_ENDPOINT);
+    let incoming_request = api::get_content(&url).unwrap();
+    let decoded: Vec<Post> = json::decode(&incoming_request).unwrap();
+    decoded
 }
 
 pub fn get_post(id:  i32) -> Post{
