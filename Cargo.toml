@@ -6,6 +6,4 @@ authors = ["Arlefreak <hi@arlefreak.com>"]
 [dependencies]
 termion = "1"
 clap = "2"
-hyper = "*"
-url = "*"
-rustc-serialize = "*"
+afk_api = { path = "./afk_api/" }

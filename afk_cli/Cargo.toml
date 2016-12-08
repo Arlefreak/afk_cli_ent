@@ -1,0 +1,6 @@
+[package]
+name = "afk-cli"
+version = "0.1.0"
+authors = ["Arlefreak <hi@arlefreak.com>"]
+
+[dependencies]

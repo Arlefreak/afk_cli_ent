@@ -1,10 +1,6 @@
 extern crate termion;
-extern crate hyper;
 extern crate clap;
-extern crate url;
-extern crate rustc_serialize;
-
-mod afk;
+extern crate afk_api;
 
 use clap::{Arg, App};
 use termion::{clear, color, cursor};
@@ -37,26 +33,26 @@ fn main(){
     let config = matches.value_of("config").unwrap_or("default.conf");
     println!("Value for config: {}", config);
 
-    test_afk();
+    // test_afk();
     test_colors();
     println!("");
     test();
     println!("");
-    print_projects();
+    // print_projects();
     // read_passwd();
 }
 
-fn test_afk(){
-    afk::afk();
-    println!("{:?}", afk::about::get_entry(2).slug);
-    println!("{:?}", afk::about::get_entries()[0].slug);
-    println!("{:?}", afk::diary::get_post(7).slug);
-    println!("{:?}", afk::diary::get_posts()[0].slug);
-    println!("{:?}", afk::portfolio::get_project(2).slug);
-    println!("{:?}", afk::portfolio::get_projects()[0].slug);
-    println!("{:?}", afk::portfolio::get_project_category(1).slug);
-    println!("{:?}", afk::portfolio::get_project_categories()[0].slug);
-}
+// fn test_afk(){
+//     afk::afk();
+//     println!("{:?}", afk::about::get_entry(2).slug);
+//     println!("{:?}", afk::about::get_entries()[0].slug);
+//     println!("{:?}", afk::diary::get_post(7).slug);
+//     println!("{:?}", afk::diary::get_posts()[0].slug);
+//     println!("{:?}", afk::portfolio::get_project(2).slug);
+//     println!("{:?}", afk::portfolio::get_projects()[0].slug);
+//     println!("{:?}", afk::portfolio::get_project_category(1).slug);
+//     println!("{:?}", afk::portfolio::get_project_categories()[0].slug);
+// }
 
 fn format_cap<T:Display>(content:T, capacity:i32) -> String{
     match capacity{
@@ -108,16 +104,16 @@ fn test_colors() {
 //     }
 // }
 
-fn print_projects(){
-    loop{
-        let projects: Vec<afk::portfolio::Project> = afk::portfolio::get_projects();
-        println!("\n{}{}{}{}{}{}", cursor::Hide, clear::All, cursor::Goto(1, 1), color::Fg(color::White), color::Bg(color::Black), projects[0].slug);
-        println!("\n{}{}{}", cursor::Hide, clear::All, color::Bg(color::Black));
-        for (index, project) in projects.iter().enumerate() {
-            println!("\n{}{}{}{}{}.- {}", cursor::Hide, cursor::Goto(1, (index as u16)+1), color::Fg(color::White), color::Bg(color::Black), index,project.slug);
-        }
-        println!("{}{}{}           Arlefreak.com           ", cursor::Goto(1, 1), color::Fg(color::Black),color::Bg(color::White));
-        println!("{}{}{}           Projects                ", cursor::Goto(1, 28), color::Fg(color::Black),color::Bg(color::White));
-        thread::sleep(time::Duration::from_millis(900));
-    }
-}
+// fn print_projects(){
+//     loop{
+//         let projects: Vec<afk::portfolio::Project> = afk::portfolio::get_projects();
+//         println!("\n{}{}{}{}{}{}", cursor::Hide, clear::All, cursor::Goto(1, 1), color::Fg(color::White), color::Bg(color::Black), projects[0].slug);
+//         println!("\n{}{}{}", cursor::Hide, clear::All, color::Bg(color::Black));
+//         for (index, project) in projects.iter().enumerate() {
+//             println!("\n{}{}{}{}{}.- {}", cursor::Hide, cursor::Goto(1, (index as u16)+1), color::Fg(color::White), color::Bg(color::Black), index,project.slug);
+//         }
+//         println!("{}{}{}           Arlefreak.com           ", cursor::Goto(1, 1), color::Fg(color::Black),color::Bg(color::White));
+//         println!("{}{}{}           Projects                ", cursor::Goto(1, 28), color::Fg(color::Black),color::Bg(color::White));
+//         thread::sleep(time::Duration::from_millis(900));
+//     }
+// }

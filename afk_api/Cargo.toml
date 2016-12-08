@@ -1,0 +1,9 @@
+[package]
+name = "afk_api"
+version = "0.1.0"
+authors = ["Arlefreak <hi@arlefreak.com>"]
+
+[dependencies]
+hyper = "*"
+url = "*"
+rustc-serialize = "*"
