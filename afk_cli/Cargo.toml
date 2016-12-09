@@ -1,6 +1,8 @@
 [package]
-name = "afk-cli"
+name = "afk_cli"
 version = "0.1.0"
 authors = ["Arlefreak <hi@arlefreak.com>"]
 
 [dependencies]
+termion = "*"
+afk_api = { path = "../afk_api/" }
