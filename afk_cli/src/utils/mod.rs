@@ -1,3 +1,5 @@
+pub mod graphics;
+
 use termion::color;
 use termion::color::Fg;
 use std::fmt::Display;
