@@ -19,15 +19,13 @@ pub struct Post {
 pub fn get_posts() -> Vec<Post>{
     let url = format!("{}{}", utils::API_ENDPOINT, diary::API_ENDPOINT);
     let incoming_request = utils::get::content(&url).unwrap();
-    let decoded: Vec<Post> = json::decode(&incoming_request).unwrap();
-    decoded
+    json::decode(&incoming_request).unwrap()
 }
 
 pub fn get_post(id:  i32) -> Post{
     let url = format!("{}{}{}", utils::API_ENDPOINT, diary::API_ENDPOINT, id);
     let incoming_request = utils::get::content(&url).unwrap();
-    let decoded: Post = json::decode(&incoming_request).unwrap();
-    decoded
+    json::decode(&incoming_request).unwrap()
 }
 
 pub fn log_post(id: i32){

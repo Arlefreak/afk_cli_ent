@@ -14,8 +14,7 @@ pub fn get_project_tags() -> Vec<ProjectTag> {
                       portfolio::API_ENDPOINT,
                       "tag/");
     let incoming_request = utils::get::content(&url).unwrap();
-    let decoded: Vec<ProjectTag> = json::decode(&incoming_request).unwrap();
-    decoded
+    json::decode(&incoming_request).unwrap()
 }
 
 pub fn get_project_tag(id: i32) -> ProjectTag {
@@ -25,6 +24,5 @@ pub fn get_project_tag(id: i32) -> ProjectTag {
                       "tag/",
                       id);
     let incoming_request = utils::get::content(&url).unwrap();
-    let decoded: ProjectTag = json::decode(&incoming_request).unwrap();
-    decoded
+    json::decode(&incoming_request).unwrap()
 }

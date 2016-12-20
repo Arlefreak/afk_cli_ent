@@ -19,8 +19,7 @@ pub fn get_project_links() -> Vec<ProjectLink> {
                       portfolio::API_ENDPOINT,
                       "projectsLinks");
     let incoming_request = utils::get::content(&url).unwrap();
-    let decoded: Vec<ProjectLink> = json::decode(&incoming_request).unwrap();
-    decoded
+    json::decode(&incoming_request).unwrap()
 }
 
 pub fn get_project_link(id: i32) -> ProjectLink {
@@ -30,6 +29,5 @@ pub fn get_project_link(id: i32) -> ProjectLink {
                       "projectsLinks/",
                       id);
     let incoming_request = utils::get::content(&url).unwrap();
-    let decoded: ProjectLink = json::decode(&incoming_request).unwrap();
-    decoded
+    json::decode(&incoming_request).unwrap()
 }

@@ -25,8 +25,7 @@ pub fn get_projects() -> Vec<Project> {
                       portfolio::API_ENDPOINT,
                       "projects/");
     let incoming_request = utils::get::content(&url).unwrap();
-    let decoded: Vec<Project> = json::decode(&incoming_request).unwrap();
-    decoded
+    json::decode(&incoming_request).unwrap()
 }
 
 pub fn get_project(id: i32) -> Project {
@@ -36,6 +35,5 @@ pub fn get_project(id: i32) -> Project {
                       "projects/",
                       id);
     let incoming_request = utils::get::content(&url).unwrap();
-    let decoded: Project = json::decode(&incoming_request).unwrap();
-    decoded
+    json::decode(&incoming_request).unwrap()
 }

@@ -24,8 +24,7 @@ pub fn get_project_images() -> Vec<ProjectImage> {
                       portfolio::API_ENDPOINT,
                       "projectsImages/");
     let incoming_request = utils::get::content(&url).unwrap();
-    let decoded: Vec<ProjectImage> = json::decode(&incoming_request).unwrap();
-    decoded
+    json::decode(&incoming_request).unwrap()
 }
 
 pub fn get_project_image(id: i32) -> ProjectImage {
@@ -35,6 +34,5 @@ pub fn get_project_image(id: i32) -> ProjectImage {
                       "projectsImages/",
                       id);
     let incoming_request = utils::get::content(&url).unwrap();
-    let decoded: ProjectImage = json::decode(&incoming_request).unwrap();
-    decoded
+    json::decode(&incoming_request).unwrap()
 }

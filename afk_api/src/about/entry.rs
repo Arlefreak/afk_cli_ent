@@ -18,15 +18,13 @@ pub struct Entry {
 pub fn get_entries() -> Vec<Entry>{
     let url = format!("{}{}", utils::API_ENDPOINT, about::API_ENDPOINT);
     let incoming_request = utils::get::content(&url).unwrap();
-    let decoded: Vec<Entry> = json::decode(&incoming_request).unwrap();
-    decoded
+    json::decode(&incoming_request).unwrap()
 }
 
 pub fn get_entry(id:  i32) -> Entry{
     let url = format!("{}{}{}", utils::API_ENDPOINT, about::API_ENDPOINT, id);
     let incoming_request = utils::get::content(&url).unwrap();
-    let decoded: Entry = json::decode(&incoming_request).unwrap();
-    decoded
+    json::decode(&incoming_request).unwrap()
 }
 
 pub fn log_entry(id: i32){

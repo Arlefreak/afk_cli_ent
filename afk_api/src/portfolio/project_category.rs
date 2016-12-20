@@ -20,8 +20,7 @@ pub fn get_project_categories() -> Vec<ProjectCategory> {
                       portfolio::API_ENDPOINT,
                       "projectsCategories/");
     let incoming_request = utils::get::content(&url).unwrap();
-    let decoded: Vec<ProjectCategory> = json::decode(&incoming_request).unwrap();
-    decoded
+    json::decode(&incoming_request).unwrap()
 }
 
 pub fn get_project_category(id: i32) -> ProjectCategory {
@@ -31,6 +30,5 @@ pub fn get_project_category(id: i32) -> ProjectCategory {
                       "projectsCategories/",
                       id);
     let incoming_request = utils::get::content(&url).unwrap();
-    let decoded: ProjectCategory = json::decode(&incoming_request).unwrap();
-    decoded
+    json::decode(&incoming_request).unwrap()
 }
